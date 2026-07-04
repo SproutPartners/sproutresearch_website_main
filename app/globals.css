@@ -1,0 +1,56 @@
+@import "tailwindcss";
+/* Accessibility remediation: focus visibility, contrast, reduced motion, and skip navigation */
+:root {
+  --sr-text: #111827;
+  --sr-muted: #374151;
+  --sr-link: #064e75;
+  --sr-focus: #111827;
+}
+
+html { scroll-behavior: smooth; }
+body { color: var(--sr-text); font-family: Arial, Helvetica, sans-serif; }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 9999;
+  transform: translateY(-160%);
+  background: #111827;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+.skip-link:focus { transform: translateY(0); }
+
+main:focus { outline: none; }
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--sr-focus);
+  outline-offset: 3px;
+  border-radius: 0.25rem;
+}
+
+.text-gray-400 { color: #4b5563 !important; }
+.text-gray-500, .text-gray-600 { color: #374151 !important; }
+.text-gray-700 { color: #1f2937 !important; }
+.text-blue-600 { color: #064e75 !important; }
+.text-blue-700, .text-blue-800, .text-blue-900 { color: #053047 !important; }
+.hover\:text-blue-600:hover, .hover\:text-blue-800:hover { color: #032638 !important; }
+.bg-gray-300 { background-color: #d1d5db !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
