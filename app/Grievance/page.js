@@ -424,7 +424,6 @@ const Page = () => {
    <div className="flex justify-start">
       <button
                 type="button"
-        type="submit"
         className="bg-blue-600 text-white py-2 px-16 lg:px-52 hover:bg-blue-700 transition text-lg"
       >
         Submit
