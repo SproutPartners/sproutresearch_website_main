@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import React from 'react';
 import Header from "@/Components/Header";
-import Footer from "@/Components/Footer";
+import Footer from "@/Components/FooterA11y";
 import Newsletter from "@/Components/Newsletter";
 import RecentInsights from "@/Components/RecentInsights";
 
@@ -22,12 +22,14 @@ export default function Home() {
     
     <>
       <Header />
+      <main id="main-content" tabIndex={-1}>
 
       {/* Section 1 */}
       <div className="relative w-full h-[80vh]">
   <Image
     src="/images/pic5.jpg"
-    alt="Decorative abstract blue financial background"
+    alt=""
+    aria-hidden="true"
     fill
     className="object-cover object-top"
   />
@@ -51,7 +53,11 @@ export default function Home() {
     </p>
     
 
-    <Link href='/Contact' className="inline-block bg-white text-black px-6 sm:px-8 py-2 font-semibold border border-black rounded-full transition-transform duration-300 hover:-translate-y-2" aria-label="Enquire now on the contact page">
+    <Link
+      href="/Contact"
+      aria-label="Enquire now on the contact page"
+      className="inline-block rounded-full border border-black bg-white px-6 py-2 font-semibold text-black transition-transform duration-300 hover:-translate-y-2 sm:px-8"
+    >
       Enquire Now
     </Link>
   </div>
@@ -62,6 +68,7 @@ export default function Home() {
       {/* Mission & Philosophy Section - Insert between Section 1 and 2 */}
       <section className=" bg-gray-300 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10 bg-white py-16 max-w-screen">
+          <h2 className="sr-only">Our mission and philosophy</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center max-h-vh">
             
             {/* Left Side - Mission and Philosophy Cards */}
@@ -76,7 +83,8 @@ export default function Home() {
                   <div className="mb-2 mr-4">
                      <Image 
                       src="/images/LEAVESONLY.png" 
-                      alt="" aria-hidden="true" 
+                      alt="" 
+                      aria-hidden="true"
                       width={32}
                       height={32}
                       className="object-contain"
@@ -84,9 +92,9 @@ export default function Home() {
                   </div>
                   
                   {/* Mission Content */}
-                  <h3 className="text-2xl lg:text-3xl font-bold text-blac mb-4 transition-colors duration-300">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-black mb-4 transition-colors duration-300">
                     Our Mission
-                  </h3>
+                  </h2>
                   
                   </div>
                   <p className="text-black text-base lg:text-lg leading-relaxed transition-colors duration-300">
@@ -104,7 +112,8 @@ export default function Home() {
                   <div className="mb-2 mr-4">
                     <Image 
                       src="/images/LEAVESONLY.png" 
-                      alt="" aria-hidden="true" 
+                      alt="" 
+                      aria-hidden="true"
                       width={32}
                       height={32}
                       className="object-contain"
@@ -112,9 +121,9 @@ export default function Home() {
                   </div>
                   
                   {/* Philosophy Content */}
-                  <h3 className="text-2xl lg:text-3xl font-bold text-black mb-4 transition-colors duration-300">
+                  <h2 className="text-2xl lg:text-3xl font-bold text-black mb-4 transition-colors duration-300">
                     Our Philosophy
-                  </h3>
+                  </h2>
                   </div>
                   
                   
@@ -183,7 +192,7 @@ export default function Home() {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-                <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="3" />
                   <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" />
                   <circle cx="12" cy="12" r="10" />
@@ -199,7 +208,7 @@ export default function Home() {
         <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2  w-full h-full">
           <div className="flex justify-center mb-6">
           <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-          <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
               d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
           </svg>
@@ -214,7 +223,7 @@ export default function Home() {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-                <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -229,7 +238,7 @@ export default function Home() {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-                <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                 d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 005.656 5.656l1.172-1.172M10.172 13.828a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656L13 4.828" />
                 </svg>
@@ -244,7 +253,7 @@ export default function Home() {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-                <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                 d="M12 3v2m0 0l6 6m-6-6L6 11m6-6v14m9 0H3" />
                 </svg>
@@ -259,7 +268,7 @@ export default function Home() {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
-                <svg aria-hidden="true" focusable="false" className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                         d="M12 2a10 10 0 100 20 10 10 0 000-20zm3 8l-2 6-6 2 2-6 6-2z" />
                 </svg>
@@ -298,7 +307,7 @@ export default function Home() {
               <div className="transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:bg-blue-100 bg-gray-100 rounded-lg px-4">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
-                    <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -321,7 +330,7 @@ export default function Home() {
               <div className="transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:bg-blue-100 bg-gray-100 rounded-lg px-4">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                    <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -344,7 +353,7 @@ export default function Home() {
               <div className="transition-transform duration-300 ease-in-out hover:-translate-y-2 hover:bg-blue-100 bg-gray-100 rounded-lg px-4">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
-                    <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -367,7 +376,7 @@ export default function Home() {
             <div className="w-full h-100">
               <Image
                 src="/images/pic4.jpg"
-                alt="Financial research process illustration"
+                alt="Our Process"
                 width={300}
                 height={200}
                 className="w-full h-full object-cover rounded-lg shadow-lg"
@@ -397,11 +406,13 @@ export default function Home() {
           Shikha’s commitment to governance and clarity empowers investors to navigate complex markets confidently.
         </p>
         
-      <div className="flex justify-center lg:justify-start">
-        <Link href="/about/our-team" className="inline-block border-2 border-gray-300 rounded-full px-6 py-2 text-gray-700 font-semibold hover:bg-gray-100 transition-all duration-300" aria-label="Read more about the Sprout Research team">
-          Read More
-        </Link>
-      </div>
+      <Link
+        href="/about/our-team"
+        aria-label="Read more about the Sprout Research team"
+        className="inline-flex justify-center rounded-full border-2 border-gray-300 px-6 py-2 font-semibold text-gray-700 transition-all duration-300 hover:bg-gray-100 lg:justify-start"
+      >
+        Read More
+      </Link>
       </div>
 
       {/* Image and Quote */}
@@ -410,7 +421,7 @@ export default function Home() {
   <div className="rounded-lg w-full max-w-md overflow-hidden">
     <Image
       src="/images/pic3.jpg"
-      alt="Financial chart and market analysis visual"
+      alt="Financial Charts"
       width={500}
       height={300}
       className="w-full h-auto object-cover"
@@ -453,36 +464,38 @@ export default function Home() {
                 
                 <div className="bg-white p-8 rounded-xl w-full max-w-4xl lg:mt-[-120px] ">
                   {          /* Title 
-                  <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
+                  <h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-8">
                     Investment Information
-                  </h2>
+                  </h1>
                   */}
 
                   {/* Toggle Button Container */}
                   <div className="flex justify-center mb-8">
-                    <button
-                type="button"
+                      <button
                         onClick={handleToggle}
-                        className="relative flex items-center bg-blue-100 rounded-full p-1 shadow-inner cursor-pointer transition-all duration-300 ease-in-out w-90 h-12"
+                        type="button"
+                        aria-label="Toggle between retail and private client services"
+                        aria-pressed={activeSection === 'institutional'}
+                        className="relative flex items-center rounded-full border-2 border-gray-700 bg-white p-1 shadow-inner cursor-pointer transition-all duration-300 ease-in-out w-90 h-14"
                       >
                         {/* Background for the active toggle */}
                         <div
-                          className={`absolute w-1/2 h-10 bg-blue-600 rounded-full shadow-md transform transition-all duration-300 ease-in-out
+                          className={`absolute w-1/2 h-12 rounded-full border border-gray-700 bg-blue-100 shadow-md transform transition-all duration-300 ease-in-out
                             ${activeSection === 'retail' ? 'translate-x-0' : 'translate-x-full'}`}
                         ></div>
 
                         {/* Retail Option */}
                         <span
-                          className={`relative flex-1 text-center text-sm sm:text-lg font-semibold py-2 px-2 sm:px-4 rounded-full transition-colors duration-300 ease-in-out
-                            ${activeSection === 'retail' ? 'text-white' : 'text-blue-700'}`}
+                          className={`relative flex-1 text-center text-lg sm:text-xl font-semibold py-2 px-2 sm:px-4 rounded-full transition-colors duration-300 ease-in-out
+                            ${activeSection === 'retail' ? 'text-black' : 'text-gray-950'}`}
                         >
                           Retail
                         </span>
 
                         {/* Institutional Option */}
                         <span
-                          className={`relative flex-1 text-center text-sm sm:text-lg font-semibold py-2 px-2 sm:px-4 rounded-full transition-colors duration-300 ease-in-out
-                            ${activeSection === 'institutional' ? 'text-white' : 'text-blue-700'}`}
+                          className={`relative flex-1 text-center text-lg sm:text-xl font-semibold py-2 px-2 sm:px-4 rounded-full transition-colors duration-300 ease-in-out
+                            ${activeSection === 'institutional' ? 'text-black' : 'text-gray-950'}`}
                         >
                           Private Client
                         </span>
@@ -494,23 +507,24 @@ export default function Home() {
                     {activeSection === 'retail' ? (
                       // Retail Content
                       <div className="animate-fade-in">
-                        <h2 className="text-2xl font-semibold text-gray-700 mb-4">
+                        <h2 className="text-3xl font-semibold text-black mb-4">
                           Retail
                         </h2>
                         <p className="text-gray-600 leading-relaxed mb-4">
                           Our research is designed to bridge the gap between complex financial analysis and the needs of retail investors. We focus on high-growth opportunities across various market capitalizations, from small-cap gems to established large-cap stocks
                         </p>
                         <ul className="list-disc list-inside text-gray-600 space-y-2">
-                          <li><a className="font-bold">Robust Fundamental and Forensic Analysis</a> for informed decision-making</li>
-                          <li><a className="font-bold">Independent and Unbiased Research</a> for objective and trustworthy analysis</li>
-                          <li><a className="font-bold">Practical stock ideas for Active investors</a> with Short to short- to medium-term focus</li>
-                          <li><a className="font-bold">Clear, Actionable Insights</a> that are easy to understand</li>
-                          
-                          <li><a className="font-bold">Affordable subscription pricing:</a> </li>
-                          <ul className="list-decimal pl-12 list-inside text-gray-600 space-y-2">
-                              <li>Half-yearly : INR 15,000/-</li>
-                              <li>Annual : INR 25,000/-</li>
-                            </ul>
+                          <li><span className="font-bold">Robust Fundamental and Forensic Analysis</span> for informed decision-making</li>
+                          <li><span className="font-bold">Independent and Unbiased Research</span> for objective and trustworthy analysis</li>
+                          <li><span className="font-bold">Practical stock ideas for Active investors</span> with short- to medium-term focus</li>
+                          <li><span className="font-bold">Clear, Actionable Insights</span> that are easy to understand</li>
+                          <li>
+                            <span className="font-bold">Affordable subscription pricing:</span>
+                            <ol className="list-decimal list-inside pl-6">
+                              <li>Half-yearly: INR 15,000/-</li>
+                              <li>Annual: INR 25,000/-</li>
+                            </ol>
+                          </li>
                         </ul>
                         <p className="text-gray-600 leading-relaxed italic mt-4">
                          Tailored for young, emerging, and cost-conscious investors, our affordable subscription plans deliver professional-grade research, empowering beginners to confidently invest in the stock market without breaking the bank.
@@ -518,7 +532,8 @@ export default function Home() {
                         {/* Button for Retail Section */}
                         <div className="mt-6 text-center">
                           <a
-                            href="/Research/Retail" // Placeholder link
+                            href="/Research/Retail"
+                            aria-label="Know more about Sprout Research Retail"
                             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg"
                           >
                             Know More 
@@ -542,7 +557,8 @@ export default function Home() {
                         {/* Button for Institutional Section */}
                         <div className="mt-10 text-center">
                           <a
-                            href="/Research/Pcg" // Placeholder link
+                            href="/Research/Pcg"
+                            aria-label="Know more about Sprout Research Private Client Group"
                             className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg"
                           >
                            Know More
@@ -582,7 +598,7 @@ export default function Home() {
             <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center mb-6">
                 <div className="bg-blue-100 rounded-full p-3 mr-4">
-                  <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
@@ -616,7 +632,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="font-semibold text-gray-700">Validity:</span>
-                  <span className="text-green-600 ml-2 font-semibold">Perpetual</span>
+                  <span className="text-green-700 ml-2 font-semibold">Perpetual</span>
                 </div>
               </div>
             </div>
@@ -625,7 +641,7 @@ export default function Home() {
             <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center mb-6">
                 <div className="bg-green-100 rounded-full p-3 mr-4">
-                  <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
@@ -645,7 +661,11 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="font-semibold text-gray-700 block mb-1">Mobile:</span>
-                  <a href="tel:9811744587" className="text-blue-600 hover:text-blue-800 transition-colors">
+                  <a
+                    href="tel:9811744587"
+                    aria-label="Call Principal Officer Shikha Kapur at plus 91 98117 44587"
+                    className="text-blue-700 hover:text-blue-900 transition-colors"
+                  >
                     +91 98117 44587
                   </a>
                 </div>
@@ -663,7 +683,7 @@ export default function Home() {
             <div className="bg-white rounded-2xl border-2 border-gray-200 p-8 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center mb-6">
                 <div className="bg-purple-100 rounded-full p-3 mr-4">
-                  <svg aria-hidden="true" focusable="false" className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -683,7 +703,7 @@ export default function Home() {
                   <span className="font-semibold text-gray-700 block mb-2">Important Links:</span>
                   <div className="space-y-2">
                     <a 
-                      aria-label="Open the SEBI SCORES grievance portal" href="https://scores.sebi.gov.in/scores-home" 
+                      href="https://scores.sebi.gov.in/scores-home" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="block text-blue-600 hover:text-blue-800 transition-colors underline"
@@ -691,7 +711,7 @@ export default function Home() {
                       SEBI SCORES Portal
                     </a>
                     <a 
-                      aria-label="Open the SMART ODR dispute resolution portal" href="https://smartodr.in/login" 
+                      href="https://smartodr.in/login" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="block text-blue-600 hover:text-blue-800 transition-colors underline"
@@ -708,6 +728,7 @@ export default function Home() {
         </div>
       </section>
 
+      </main>
       <Footer />
     </>
   );

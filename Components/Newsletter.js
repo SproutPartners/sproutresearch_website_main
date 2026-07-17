@@ -94,21 +94,25 @@ const Newsletter = () => {
         )}
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <label htmlFor="newsletter-email" className="sr-only">
+            Enter your email address
+          </label>
           <input
+            id="newsletter-email"
             type="email"
             name="email"
             placeholder="Enter your email"
+            autoComplete="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full sm:w-2/3 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+            className="w-full bg-white sm:w-2/3 px-4 py-3 rounded-lg border-2 border-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:border-blue-700 transition"
             disabled={status === 'loading'}
           />
           <button
-                type="button"
             type="submit"
             disabled={status === 'loading'}
-            className="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-500 text-white font-semibold hover:bg-blue-600 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full sm:w-auto px-6 py-3 rounded-lg bg-blue-700 text-white font-semibold hover:bg-blue-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {status === 'loading' ? 'Subscribing...' : 'Subscribe Now'}
           </button>

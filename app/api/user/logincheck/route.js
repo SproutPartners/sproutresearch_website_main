@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { adminAuth, adminDb } from '@/lib/firebaseAdmin';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebaseClient';
+import { auth, hasFirebaseClientConfig } from '@/lib/firebaseClient';
 import { SignJWT } from 'jose';
 
 export async function POST(request) {
@@ -18,7 +18,7 @@ export async function POST(request) {
 
     // Check if JWT secret is configured
     const jwtSecret = process.env.USER_JWT_SECRET;
-    if (!jwtSecret) {
+    if (!jwtSecret || !hasFirebaseClientConfig || !auth || !adminDb || !adminAuth) {
       console.error('USER_JWT_SECRET is not configured');
       return NextResponse.json(
         { message: 'Server configuration error' },

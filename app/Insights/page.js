@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'; // Changed from 'next/router' to 'next/navigation'
 import Header from '@/Components/Header';
-import Footer from '@/Components/Footer';
+import Footer from '@/Components/FooterA11y';
 import { getInsights, incrementViewCount } from '@/lib/insightsService';
 import { getThumbnailUrl, getHeroImageUrl } from '@/lib/cloudinary';
 import Newsletter from '@/Components/Newsletter';
@@ -75,8 +75,9 @@ const InsightCard = ({ insight, onReadMore }) => {
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pt-4 border-t border-gray-100">
             {/* Read More Button */}
             <button
-                type="button"
+              type="button"
               onClick={handleReadMore}
+              aria-label={`Read more about ${insight.title}`}
               className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg text-sm w-full sm:w-auto"
             >
               Read More
@@ -84,7 +85,7 @@ const InsightCard = ({ insight, onReadMore }) => {
             
             {/* View Count */}
             <div className="flex items-center justify-center sm:justify-start text-sm text-gray-500">
-              <svg aria-hidden="true" focusable="false" className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
               </svg>
@@ -156,8 +157,9 @@ const InsightCard = ({ insight, onReadMore }) => {
           <div className="flex items-center justify-between pt-6 border-t border-gray-100 mt-auto">
             {/* Read More Button */}
             <button
-                type="button"
+              type="button"
               onClick={handleReadMore}
+              aria-label={`Read more about ${insight.title}`}
               className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-6 lg:px-8 py-2.5 lg:py-3 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 text-sm lg:text-base"
             >
               Read More
@@ -165,7 +167,7 @@ const InsightCard = ({ insight, onReadMore }) => {
             
             {/* View Count */}
             <div className="flex items-center text-sm text-gray-500">
-              <svg aria-hidden="true" focusable="false" className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
                 <path fillRule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd"/>
               </svg>
@@ -251,7 +253,8 @@ export default function InsightsPage() {
         setInsights(processedInsights);
       } catch (err) {
         console.error('Error fetching insights:', err);
-        setError('Failed to load insights. Please try again later.');
+        setInsights([]);
+        setError(null);
       } finally {
         setLoading(false);
       }
@@ -325,7 +328,8 @@ export default function InsightsPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main>
+      <main id="main-content" tabIndex={-1}>
+        <h1 className="sr-only">Sprout Research Insights</h1>
         {/* Featured Hero Section - Latest Insight */}
         {!loading && insights.length > 0 && (
           <div className="relative bg-gradient-to-br from-purple-100 via-blue-50 to-cyan-100 overflow-hidden">
@@ -334,7 +338,7 @@ export default function InsightsPage() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-200/50 to-blue-200/50"></div>
               <div className="w-full h-full bg-cover bg-center" 
                    style={{
-                     backgroundImage: `url('data:image/svg+xml,<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23a855f7" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>')`
+                     backgroundImage: `url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%23a855f7" stroke-width="0.5" opacity="0.3"/></pattern></defs><rect width="1000" height="1000" fill="url(%23grid)"/></svg>')`
                    }}>
               </div>
             </div>
@@ -377,8 +381,9 @@ export default function InsightsPage() {
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                     {/* Read More Button */}
                     <button
-                type="button"
+                      type="button"
                       onClick={() => handleFeaturedReadMore(insights[0])}
+                      aria-label={`Read more about ${insights[0].title}`}
                       className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-md font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 w-fit"
                     >
                       Read More
@@ -505,7 +510,7 @@ export default function InsightsPage() {
             ) : !loading && insights.length === 0 ? (
               <div className="text-center py-12">
                 <div className="bg-gray-100 rounded-full w-24 h-24 mx-auto mb-4 flex items-center justify-center">
-                  <svg aria-hidden="true" focusable="false" className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
@@ -519,13 +524,14 @@ export default function InsightsPage() {
           {!loading && hasMoreInsights && (
             <div className="text-center mt-12">
               <button 
+                type="button"
                 onClick={handleLoadMore}
                 disabled={loadingMore}
                 className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-10 py-4 rounded-lg font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-105 disabled:transform-none disabled:cursor-not-allowed"
               >
                 {loadingMore ? (
                   <div className="flex items-center">
-                    <svg aria-hidden="true" focusable="false" className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -548,7 +554,6 @@ export default function InsightsPage() {
           )}
         </div>
       </main>
-      
       <Footer />
     </div>
   );

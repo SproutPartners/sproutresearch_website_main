@@ -3,17 +3,19 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Header from '@/Components/Header'
-import Footer from '@/Components/Footer'
+import Footer from '@/Components/FooterA11y'
 
 const Page = () => {
   return (
     <>
     <Header />
+    <main id="main-content" tabIndex={-1}>
 
     <div className="relative w-full h-[70vh] sm:h-[75vh] md:h-[85vh] lg:h-[90vh] xl:h-[60vh]  overflow-hidden">
           <Image
             src="/images/pic5.jpg" // make sure this path is correct
-            alt="Decorative abstract blue financial background"
+            alt=""
+            aria-hidden="true"
             fill
             className="object-cover object-center z-0"
             priority
@@ -62,7 +64,7 @@ const Page = () => {
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 mt-1">
           <div className="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center">
-            <svg aria-hidden="true" focusable="false"
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 text-blue-600"
               fill="none"
@@ -89,7 +91,7 @@ const Page = () => {
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 mt-1">
           <div className="w-10 h-10 bg-green-50 rounded-full flex items-center justify-center">
-            <svg aria-hidden="true" focusable="false"
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               className="w-5 h-5 text-green-600"
               fill="none"
@@ -127,7 +129,7 @@ const Page = () => {
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 mt-1">
             <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center">
-              <svg aria-hidden="true" focusable="false"
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 text-blue-600"
                 fill="none"
@@ -154,7 +156,7 @@ const Page = () => {
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0 mt-1">
             <div className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center">
-              <svg aria-hidden="true" focusable="false"
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-6 h-6 text-green-600"
                 fill="none"
@@ -680,6 +682,7 @@ const Page = () => {
   </div>
 </div>
     
+    </main>
     <Footer/>
 
   

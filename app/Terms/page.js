@@ -1,4 +1,4 @@
-import Footer from '@/Components/Footer';
+import Footer from '@/Components/FooterA11y';
 import Header from '@/Components/Header';
 import Image from 'next/image';
 
@@ -12,7 +12,8 @@ export default function Terms() {
         <div className="relative w-full h-[20vh] sm:h-[20vh] md:h-[20vh] lg:h-[40vh] overflow-hidden">
                   <Image
                     src="/images/pic5.jpg" // make sure this path is correct
-                    alt="Decorative abstract blue financial background"
+                    alt=""
+                    aria-hidden="true"
                     fill
                     className="object-cover object-top z-0"
                     priority

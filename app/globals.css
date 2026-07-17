@@ -1,56 +1,82 @@
 @import "tailwindcss";
-/* Accessibility remediation: focus visibility, contrast, reduced motion, and skip navigation */
+
 :root {
-  --sr-text: #111827;
-  --sr-muted: #374151;
-  --sr-link: #064e75;
-  --sr-focus: #111827;
+  --background: #ffffff;
+  --foreground: #101828;
+  --text-muted: #475467;
+  --text-subtle: #344054;
+  --focus-ring: #0f62fe;
 }
 
-html { scroll-behavior: smooth; }
-body { color: var(--sr-text); font-family: Arial, Helvetica, sans-serif; }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+[class~='text-gray-400'] {
+  color: #667085 !important;
+}
+
+[class~='text-gray-500'] {
+  color: #475467 !important;
+}
+
+[class~='text-gray-600'] {
+  color: #344054 !important;
+}
+
+[class~='text-blue-400'] {
+  color: #1d4ed8 !important;
+}
+
+a,
+button,
+input,
+select,
+textarea {
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+}
 
 .skip-link {
   position: absolute;
   left: 1rem;
-  top: 0.75rem;
-  z-index: 9999;
-  transform: translateY(-160%);
-  background: #111827;
-  color: #ffffff;
+  top: -3rem;
+  z-index: 1000;
+  background: #ffffff;
+  color: #101828;
   padding: 0.75rem 1rem;
   border-radius: 0.5rem;
-  font-weight: 700;
-}
-.skip-link:focus { transform: translateY(0); }
-
-main:focus { outline: none; }
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible,
-summary:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--sr-focus);
-  outline-offset: 3px;
-  border-radius: 0.25rem;
+  box-shadow: 0 10px 30px rgba(16, 24, 40, 0.18);
 }
 
-.text-gray-400 { color: #4b5563 !important; }
-.text-gray-500, .text-gray-600 { color: #374151 !important; }
-.text-gray-700 { color: #1f2937 !important; }
-.text-blue-600 { color: #064e75 !important; }
-.text-blue-700, .text-blue-800, .text-blue-900 { color: #053047 !important; }
-.hover\:text-blue-600:hover, .hover\:text-blue-800:hover { color: #032638 !important; }
-.bg-gray-300 { background-color: #d1d5db !important; }
+.skip-link:focus {
+  top: 1rem;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }

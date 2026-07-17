@@ -1,30 +1,29 @@
-import './globals.css'
-import { UserAuthProvider } from '@/contexts/UserAuthContext'
-import DynamicDocumentTitle from '@/Components/accessibility/DynamicDocumentTitle'
+import './globals.css';
+import { UserAuthProvider } from '@/contexts/UserAuthContext';
+import PageTitleUpdater from '@/Components/PageTitleUpdater';
 
 export const metadata = {
-  title: {
-    default: 'Sprout Research | Independent Quality Stock Research',
-    template: '%s | Sprout Research',
-  },
-  description: 'Independent quality stock research with fundamental analysis, forensic scrutiny, and risk-focused investment insights.',
+  title: 'Sprout Research',
+  description:
+    'Independent quality stock research with fundamental analysis, forensic scrutiny, and risk-focused investment insights.',
   icons: {
     icon: '/favicon.png',
   },
-}
+};
+
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased">
-        <a href="#main-content" className="skip-link">Skip to main content</a>
-        <DynamicDocumentTitle />
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <UserAuthProvider>
-          <main id="main-content" tabIndex={-1}>
-            {children}
-          </main>
+          <PageTitleUpdater />
+          {children}
         </UserAuthProvider>
       </body>
     </html>
-  )
+  );
 }

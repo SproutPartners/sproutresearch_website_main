@@ -46,11 +46,10 @@ export default function LoginPage() {
   return (
     <>
       <Header />
-
-      <div className="min-h-screen flex flex-col md:flex-row">
+      <main id="main-content" tabIndex={-1} className="min-h-screen flex flex-col md:flex-row">
         {/* Left side with logo and name */}
         <div className="md:w-1/2 w-full bg-[#0D1B2A] flex flex-col items-center justify-center p-10 text-white">
-          <Image src="/images/HD.png" alt="Sprout Research logo" width={400} height={400} />
+          <Image src="/images/HD.png" alt="Company Logo" width={400} height={400} />
           <h1 className="mt-4 text-3xl md:text-4xl font-bold">Retail Portal</h1>
         </div>
 
@@ -71,26 +70,30 @@ export default function LoginPage() {
 
             <form onSubmit={handleLogin} className="space-y-4">
               <div>
-                <label className="block text-sm text-gray-700 mb-1">Email</label>
+                <label htmlFor="login-email" className="block text-sm font-medium text-gray-900 mb-1">Email</label>
                 <input
+                  id="login-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   placeholder="Enter your email"
-                  className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  autoComplete="email"
+                  className="w-full px-4 py-2 border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700"
                 />
               </div>
 
               <div>
-                <label className="block text-sm text-gray-700 mb-1">Password</label>
+                <label htmlFor="login-password" className="block text-sm font-medium text-gray-900 mb-1">Password</label>
                 <input
+                  id="login-password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                   placeholder="Enter your password"
-                  className="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  autoComplete="current-password"
+                  className="w-full px-4 py-2 border-2 border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:border-indigo-700"
                 />
               </div>
 
@@ -104,7 +107,7 @@ export default function LoginPage() {
             </form>
           </div>
         </div>
-      </div>
+      </main>
 
       <Footer />
     </>

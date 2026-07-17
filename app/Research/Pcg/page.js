@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Header from '@/Components/Header'
-import Footer from '@/Components/Footer'
+import Footer from '@/Components/FooterA11y'
 import Image from 'next/image';
 
 
@@ -51,12 +51,14 @@ const page = () => {
   return (
   <>
     <Header/>
+    <main id="main-content" tabIndex={-1}>
 
     {/* Background Image and Content */}
     <div className="relative w-full h-[40vh] sm:h-[60vh] md:h-[70vh] lg:h-[70vh] xl:h-[70vh]  overflow-hidden">
       <Image
         src="/images/pic5.jpg" // make sure this path is correct
-        alt="Decorative abstract blue financial background"
+        alt=""
+        aria-hidden="true"
         fill
         className="object-cover object-center z-0"
         priority
@@ -69,7 +71,7 @@ const page = () => {
           <div className="h-12 xs:h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-32 rounded-lg overflow-hidden flex items-center justify-center sm:-mx-1 relative z-20">
             <Image
               src="/images/HD.png"
-              alt="Sprout Research logo"
+              alt="Logo"
               className="object-contain w-full h-full"
               width={400}
               height={200}
@@ -78,14 +80,14 @@ const page = () => {
           
           
           <div className="h-12 xs:h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-32 text-gray-600 text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-extralight rounded-lg overflow-hidden flex items-center justify-center sm:-mx-1 relative z-20">
-            <span aria-hidden="true" className="leading-none text-4xl">|</span>
+            <h1 className="leading-none">|</h1>
           </div>
           
           
           <div className="h-12 xs:h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-32 rounded-lg overflow-hidden flex items-center justify-center sm:-mx-1 relative z-20">
             <Image
               src="/images/Trudence.png"
-              alt="Sprout Research logo"
+              alt="Logo"
               style={{ filter: 'brightness(100%)' }}
               className="object-contain w-full h-full"
               width={400}
@@ -126,13 +128,14 @@ const page = () => {
     {/*section 3  */}
     <section id="about" className="bg-gray-100 w-full py-16 lg:py-20">
       <div className="container max-w-7xl mx-auto px-4">
+        <h2 className="sr-only">Private Client Group research process highlights</h2>
         {/* Features Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6">
           {/* Feature 1 */}
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 lg:mt-32 w-full min-h-[300px] sm:min-h-[350px] lg:h-3/4 flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" focusable="false" className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="3" />
                   <path d="M12 1v6m0 6v6m11-7h-6m-6 0H1" />
                   <circle cx="12" cy="12" r="10" />
@@ -149,7 +152,7 @@ const page = () => {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 lg:mt-12 w-full min-h-[280px] sm:min-h-[320px] lg:h-2/3 flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" focusable="false" className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                     d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
@@ -165,7 +168,7 @@ const page = () => {
           <div className="bg-white rounded-3xl border-2 border-gray-200 p-6 sm:p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 lg:mt-32 w-full min-h-[300px] sm:min-h-[350px] lg:h-3/4 flex flex-col">
             <div className="flex justify-center mb-6">
               <div className="bg-white border-2 border-gray-300 rounded-full w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center flex-shrink-0">
-                <svg aria-hidden="true" focusable="false" className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8 sm:w-10 sm:h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -225,9 +228,9 @@ const page = () => {
 
     {/* Section 5 with Research Reports */}
     {/* <div className="bg-white w-full min-h-screen py-16 px-6 sm:px-12 lg:px-24">
-      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4">
+      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-4">
         Why SPROUT Research?
-      </h2>
+      </h1>
       <p className='text-center text-xs sm:text-sm md:text-base lg:text-lg text-gray-500 mb-12    '>We prioritize protecting your investments with a strategic approach to risk management, ensuring your<br/>
       capital remains safeguarded while pursuing growth.</p>
 
@@ -254,9 +257,9 @@ const page = () => {
 
     {/* Section 6 with Research Reports */}
     {/* <div className="bg-white w-full min-h-screen py-16 px-6 sm:px-12 lg:px-24 ">
-      <h2 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-12">
+      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium mb-12">
         Our Methodology: From Identification to Realization
-      </h2>
+      </h1>
       
 
       <div className="flex flex-col ">
@@ -477,6 +480,7 @@ const page = () => {
       </div>
     </div>
 
+    </main>
     <Footer/>
 
   </>
