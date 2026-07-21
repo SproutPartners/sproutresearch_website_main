@@ -421,6 +421,15 @@ const Footer = () => {
               <ul className="flex flex-wrap items-center gap-4">
                 <li>
                   <a
+                    href="/accessibility-statement"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                  >
+                    Accessibility Statement
+                  </a>
+                </li>
+                <li aria-hidden="true" className="text-gray-600">|</li>
+                <li>
+                  <a
                     href="/PrivacyPolicy"
                     className="text-gray-600 hover:text-gray-900 transition-colors duration-300"
                   >

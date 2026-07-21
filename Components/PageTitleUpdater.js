@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const PAGE_TITLES = {
   '/': 'About Sprout Research | Independent Quality Stock Research',
+  '/accessibility-statement': 'Digital Accessibility Statement | Sprout Research',
   '/Charter': 'Investor Charter | Sprout Research',
   '/Contact': 'Contact Sprout Research | Sprout Research',
   '/Disclaimer': 'Disclaimer | Sprout Research',

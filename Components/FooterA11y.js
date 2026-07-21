@@ -107,6 +107,7 @@ const FooterA11y = () => {
                 <li><Link className="text-gray-800 hover:text-black" href="/Charter">Investor Charter</Link></li>
                 <li><Link className="text-gray-800 hover:text-black" href="/Grievance">Investor Grievance</Link></li>
                 <li><Link className="text-gray-800 hover:text-black" href="/Report">Investor Grievance Report</Link></li>
+                <li><Link className="text-gray-800 hover:text-black" href="/accessibility-statement">Accessibility Statement</Link></li>
                 <li><Link className="text-gray-800 hover:text-black" href="/PrivacyPolicy">Privacy Policy</Link></li>
                 <li><Link className="text-gray-800 hover:text-black" href="/Terms">Terms and Conditions</Link></li>
                 <li><Link className="text-gray-800 hover:text-black" href="/Refund_Cancellation">Refund and Cancellation Policy</Link></li>
