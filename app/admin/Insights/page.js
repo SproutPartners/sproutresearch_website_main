@@ -1,16 +1,32 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import { useAuth } from '@/contexts/AuthContext';
 import { addInsight } from '@/lib/insightsService';
 import { uploadPdfAndSaveDetails } from '@/lib/pdfService';
 import { generateSlug } from '@/lib/slugUtils';
 import Login from '@/app/admin/Insights/LoginForm';
-import StockManagement from '@/app/api/stockmanagement/stock_manage';
+
+const StockManagement = dynamic(() => import('@/app/api/stockmanagement/stock_manage'), {
+  ssr: false,
+  loading: () => <div className="rounded-lg bg-white p-6 shadow text-sm text-gray-600">Loading stock tools...</div>,
+});
+
+const GrievanceReportAdmin = dynamic(() => import('@/Components/GrievanceReportAdmin'), {
+  ssr: false,
+  loading: () => <div className="rounded-lg bg-white p-6 shadow text-sm text-gray-600">Loading grievance report editor...</div>,
+});
 
 export default function AdminInsights() {
   const { isAuthenticated, loading: authLoading, user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState('insights');
+
+  useEffect(() => {
+    if (user?.role === 'grievance-only') {
+      setActiveTab('grievance');
+    }
+  }, [user]);
 
   const [formData, setFormData] = useState({
     title: '',
@@ -169,11 +185,16 @@ export default function AdminInsights() {
     return <Login />;
   }
 
-  const tabs = [
-    { id: 'insights', name: 'Insights', icon: '📊' },
-    { id: 'stocks', name: 'Stock Management', icon: '📈' },
-    { id: 'users', name: 'User Management', icon: '👥' }
-  ];
+  const isGrievanceOnly = user?.role === 'grievance-only';
+
+  const tabs = isGrievanceOnly
+    ? [{ id: 'grievance', name: 'Grievance Report', icon: 'Report' }]
+    : [
+        { id: 'insights', name: 'Insights', icon: 'Insights' },
+        { id: 'stocks', name: 'Stock Management', icon: 'Stocks' },
+        { id: 'users', name: 'User Management', icon: 'Users' },
+        { id: 'grievance', name: 'Grievance Report', icon: 'Report' }
+      ];
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -216,7 +237,7 @@ export default function AdminInsights() {
         {/* Tab Content */}
         <div className="space-y-6">
           {/* Insights Tab */}
-          {activeTab === 'insights' && (
+          {!isGrievanceOnly && activeTab === 'insights' && (
             <>
               {/* Add Insight Form */}
               <div className="bg-white p-6 rounded-lg shadow space-y-4">
@@ -399,12 +420,12 @@ export default function AdminInsights() {
           )}
 
           {/* Stocks Tab */}
-          {activeTab === 'stocks' && (
+          {!isGrievanceOnly && activeTab === 'stocks' && (
             <StockManagement />
           )}
 
           {/* Users Tab */}
-          {activeTab === 'users' && (
+          {!isGrievanceOnly && activeTab === 'users' && (
             <div className="bg-white p-6 rounded-lg shadow-xl space-y-4">
               <h2 className="text-xl font-bold mb-4">Add New User</h2>
               <form onSubmit={handleAddUser} className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -458,6 +479,8 @@ export default function AdminInsights() {
               </form>
             </div>
           )}
+
+          {activeTab === 'grievance' && <GrievanceReportAdmin />}
         </div>
       </div>
     </div>

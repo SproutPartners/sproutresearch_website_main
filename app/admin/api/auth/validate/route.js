@@ -22,7 +22,8 @@ export async function POST(request) {
         valid: true,
         session: {
           username: validation.session.username,
-          expiresAt: validation.session.expiresAt
+          expiresAt: validation.session.expiresAt,
+          role: validation.session.role || 'full'
         }
       });
     } else {

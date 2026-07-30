@@ -1,6 +1,6 @@
 // app/api/auth/login/route.js
 import { NextResponse } from 'next/server';
-import { authenticateUser } from '@/lib/adminauth';
+import { authenticateUser, validateSession } from '@/lib/adminauth';
 
 export async function POST(request) {
   try {
@@ -16,10 +16,12 @@ export async function POST(request) {
     const result = authenticateUser(username, password, clientId);
 
     if (result.success) {
+      const session = validateSession(result.sessionToken).session;
       return NextResponse.json({
         success: true,
         sessionToken: result.sessionToken,
-        expiresAt: result.expiresAt
+        expiresAt: result.expiresAt,
+        role: session?.role || 'full'
       });
     } else {
       return NextResponse.json({

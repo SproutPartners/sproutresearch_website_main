@@ -32,7 +32,7 @@ export const AuthProvider = ({ children }) => {
           const { valid, session } = await response.json();
           if (valid) {
             setIsAuthenticated(true);
-            setUser({ username: session.username });
+            setUser({ username: session.username, role: session.role || 'full' });
           } else {
             clientAuth.clearSession();
             setIsAuthenticated(false);
@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }) => {
       if (data.success) {
         clientAuth.setSession(data.sessionToken, data.expiresAt);
         setIsAuthenticated(true);
-        setUser({ username });
+        setUser({ username, role: data.role || 'full' });
         return { success: true };
       } else {
         return { success: false, error: data.error, lockoutRemaining: data.lockoutRemaining };

@@ -1,7 +1,9 @@
 import Footer from '@/Components/FooterA11y';
 import Header from '@/Components/Header';
-import { cloneDefaultGrievanceReport } from '@/lib/grievanceReportDefaults';
+import { getCurrentGrievanceReport } from '@/lib/grievanceReportService';
 import Image from 'next/image';
+
+export const dynamic = 'force-dynamic';
 
 function ColumnTable({ columns, mobile = false, minWidth = '1000px' }) {
   const valuePaddingClass = mobile ? 'px-3 text-xs' : 'px-4 text-base';
@@ -46,8 +48,8 @@ function ColumnTable({ columns, mobile = false, minWidth = '1000px' }) {
   );
 }
 
-export default function Page() {
-  const report = cloneDefaultGrievanceReport();
+export default async function Page() {
+  const report = await getCurrentGrievanceReport();
 
   const summaryColumns = [
     { header: 'Sr No', values: report.summaryRows.map((row) => row.srNo), valueClass: 'font-medium' },
