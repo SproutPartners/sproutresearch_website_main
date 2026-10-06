@@ -14,7 +14,7 @@ const page = () => {
       id: 1,
       image: "/images/rmage1.png",
       title: "Curated Selection",
-      description: "Receive 35-40 well- researched investment ideas each year, carefully chosen for their growth potential and supported by detailed investment argument"
+      description: "Receive 20-24 well-researched investment ideas each year (approximately 2 per month), carefully chosen for their growth potential and supported by detailed investment arguments"
     },
     {
       id: 2,
@@ -100,9 +100,9 @@ const page = () => {
       <ul className="space-y-4 max-w-5xl items-center text-center flex flex-col mx-auto">
         {[
           "Research service focused on fundamental and forensic analysis, suitable for active investors",
-          "35-40 stocks annually with detailed research notes",
+          "20-24 stocks annually (approximately 2 stock ideas per month) with detailed research notes",
           "Offers long-term, tactical, and high-risk/high-reward picks, plus weekend insights on macro topics and sectors",
-          "Subscription pricing: INR 25,000/year or INR 15,000/half-year",
+          "Subscription pricing: INR 30,000/year or INR 20,000/half-year",
         ].map((item, index) => (
           <li key={index} className="flex items-start text-gray-700 text-xl sm:text-2xl leading-relaxed">
             <img
@@ -115,9 +115,9 @@ const page = () => {
               {index === 3 ? (
                 <>
                   Subscription pricing: {' '}
-                  <span className="font-semibold text-gray-900">INR 25,000/year</span>
+                  <span className="font-semibold text-gray-900">INR 30,000/year</span>
                   <span className=""> or </span>
-                  <span className="font-semibold text-gray-900">INR 15,000/half-year</span>
+                  <span className="font-semibold text-gray-900">INR 20,000/half-year</span>
                 </>
               ) : (
                 item

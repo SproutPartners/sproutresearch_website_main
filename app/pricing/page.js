@@ -68,7 +68,7 @@ export default function ProcutPricing() {
                                             Numbers of stocks covered
                                         </th>
                                         <td className="bg-blue-50 p-4 sm:p-6 text-gray-800 text-sm sm:text-base text-center">
-                                            35-40 stocks annually (approximately 3-4 stock ideas per month)
+                                            20-24 stocks annually (approximately 2 stock ideas per month)
                                         </td>
                                     </tr>
                                     <tr className="border-b border-gray-100">
@@ -116,7 +116,7 @@ export default function ProcutPricing() {
                                                         Annual Plan
                                                       </h3>
                                                       <p className="text-xl font-bold text-blue-600 mb-3">
-                                                        INR 25,000/-
+                                                        INR 30,000/-
                                                       </p>
                                                     </div>
                                                   </div>
@@ -138,7 +138,7 @@ export default function ProcutPricing() {
                                                         Half Yearly Plan
                                                       </h3>
                                                       <p className="text-xl font-bold text-blue-600 mb-3">
-                                                        INR 15,000/-
+                                                        INR 20,000/-
                                                       </p>
                                                     </div>
 

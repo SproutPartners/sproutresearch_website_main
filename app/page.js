@@ -516,13 +516,14 @@ export default function Home() {
                         <ul className="list-disc list-inside text-gray-600 space-y-2">
                           <li><span className="font-bold">Robust Fundamental and Forensic Analysis</span> for informed decision-making</li>
                           <li><span className="font-bold">Independent and Unbiased Research</span> for objective and trustworthy analysis</li>
+                          <li><span className="font-bold">20-24 stocks covered annually</span> (approximately 2 stock ideas per month)</li>
                           <li><span className="font-bold">Practical stock ideas for Active investors</span> with short- to medium-term focus</li>
                           <li><span className="font-bold">Clear, Actionable Insights</span> that are easy to understand</li>
                           <li>
                             <span className="font-bold">Affordable subscription pricing:</span>
                             <ol className="list-decimal list-inside pl-6">
-                              <li>Half-yearly: INR 15,000/-</li>
-                              <li>Annual: INR 25,000/-</li>
+                              <li>Half-yearly: INR 20,000/-</li>
+                              <li>Annual: INR 30,000/-</li>
                             </ol>
                           </li>
                         </ul>

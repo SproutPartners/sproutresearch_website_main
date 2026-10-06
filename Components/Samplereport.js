@@ -110,7 +110,7 @@ const SampleReportSection = () => {
               </div>
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-xs font-medium px-6 py-2 rounded-full shadow-lg flex items-center gap-2">
                 <Shield className="w-3 h-3" />
-                <span>Subscribe for Complete Access to 35-40 Annual Reports</span>
+                <span>Subscribe for Complete Access to 20-24 Annual Reports</span>
               </div>
             </div>
 
