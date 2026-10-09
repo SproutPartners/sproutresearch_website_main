@@ -103,7 +103,7 @@ const SubscriptionSection = () => {
 
           {/* Sections */}
           <div className="space-y-8">
-            {options.sections.map((section, index) => (
+            {options.sections.filter((section) => section.title !== "Online Automated Subscription").map((section, index) => (
               <div
                 key={index}
                 className={`relative bg-gradient-to-br ${
